@@ -1,9 +1,5 @@
-package com.example.the_four_amigos;
+package com.the_four_amigos.panic_helper.sensors;
 
-import java.util.List;
-import java.util.Locale;
-
-import android.*;
 import android.R;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -13,11 +9,10 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
+import com.the_four_amigos.panic_helper.Configurations;
+import com.the_four_amigos.panic_helper.MainActivity;
 
 public class Acceleration extends Service implements SensorEventListener{
     private float mAccel; // acceleration apart from gravity
@@ -45,7 +40,7 @@ public class Acceleration extends Service implements SensorEventListener{
         flag=false;
         Log.d(TAG, "onDestroy");
         super.onDestroy();
-
+        stopForeground(true);
     }
     public void onStart(Intent intent, int startId)
     {
@@ -56,7 +51,6 @@ public class Acceleration extends Service implements SensorEventListener{
         lastUpdate = System.currentTimeMillis();
 
         startForeground(1, new Notification());
-       // setInForeground();
     }
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -77,7 +71,16 @@ public class Acceleration extends Service implements SensorEventListener{
             mAccel = mAccel * 0.9f + delta; // perform low-cut filter
             mAccel = Math.abs(mAccel);
 
-            Log.d(TAG, mAccel + "");
+            if( (mAccel / 9.81) > Configurations.alarmGravity){
+               // new Intent(this, MainActivity.class);
+                Intent dialogIntent = new Intent(getBaseContext(), MainActivity.class);
+                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplication().startActivity(dialogIntent);
+                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplication().startActivity(dialogIntent);
+
+                Log.d(TAG, mAccel + "");
+            }
 
 
         }
@@ -107,33 +110,4 @@ public class Acceleration extends Service implements SensorEventListener{
 
     }
 
-    private void setInForeground(){
-
-
-
-        Notification note=new Notification(R.drawable.stat_notify_chat,
-                "Panic Helper",
-                System.currentTimeMillis());
-        Intent i = new Intent(this, Acceleration.class);
-
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|
-                Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-        PendingIntent pi=PendingIntent.getActivity(this, 0,
-                i, 0);
-
-        note.setLatestEventInfo(this, "Panic Helper",
-                "Running",
-                pi);
-        note.flags|=Notification.FLAG_NO_CLEAR;
-
-        startForeground(1337, note);
-
-    }
-
-
-    public void stopAcceleration(){
-        stopForeground(true);
-
-    }
 }

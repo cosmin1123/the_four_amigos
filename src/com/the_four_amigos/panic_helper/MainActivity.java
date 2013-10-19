@@ -1,18 +1,12 @@
-package com.example.the_four_amigos;
+package com.the_four_amigos.panic_helper;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
+import com.the_four_amigos.panic_helper.sensors.Acceleration;
 
-public class MyActivity extends Activity {
+public class MainActivity extends Activity {
 
     private SensorManager mSensorManager;
 
@@ -21,18 +15,11 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        //Acceleration.startAcceleration(mSensorManager);
-
         Intent accelerationService = new Intent(this, Acceleration.class);
         startService(accelerationService);
-        stopService(accelerationService);
+
+
+       // stopService(accelerationService);
     }
-
-    public void stopStartedService(Intent serviceName){
-        stopService(serviceName);
-
-    }
-
-
 
 }

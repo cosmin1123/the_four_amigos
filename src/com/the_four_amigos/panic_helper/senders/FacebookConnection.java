@@ -1,6 +1,6 @@
 package com.the_four_amigos.panic_helper.senders;
 
-import com.facebook.model.*;
+//import com.facebook.model.*;
 
 /**
  * Created with IntelliJ IDEA.

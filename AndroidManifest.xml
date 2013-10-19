@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.the_four_amigos"
+          package="com.the_four_amigos.panic_helper"
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="10"/>
@@ -14,6 +14,6 @@
             <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
 
         </activity>
-        <service android:enabled="true" android:name=".Acceleration" />
+        <service android:enabled="true" android:name=".sensors.Acceleration" />
     </application>
 </manifest> 
