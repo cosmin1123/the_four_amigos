@@ -9,7 +9,7 @@ import com.the_four_amigos.panic_helper.sensors.Acceleration;
 public class MainActivity extends Activity {
 
     private SensorManager mSensorManager;
-
+    public static boolean running;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,18 @@ public class MainActivity extends Activity {
 
 
        // stopService(accelerationService);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        running = true;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        running = false;
     }
 
 }

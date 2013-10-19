@@ -1,9 +1,11 @@
 package com.the_four_amigos.panic_helper.sensors;
 
 import android.R;
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,15 +16,19 @@ import android.util.Log;
 import com.the_four_amigos.panic_helper.Configurations;
 import com.the_four_amigos.panic_helper.MainActivity;
 
+import java.util.List;
+
 public class Acceleration extends Service implements SensorEventListener{
     private float mAccel; // acceleration apart from gravity
     private float mAccelCurrent; // current acceleration including gravity
     private float mAccelLast; // last acceleration including gravity
+    private boolean applicationRunning = false;
     boolean flag=false;
     public static final String TAG = "Acceleration";
     private long lastUpdate;
     SensorManager sensorManager;
     int count=0;
+
     @Override
     public IBinder onBind(Intent intent) {
 
@@ -71,15 +77,17 @@ public class Acceleration extends Service implements SensorEventListener{
             mAccel = mAccel * 0.9f + delta; // perform low-cut filter
             mAccel = Math.abs(mAccel);
 
+
             if( (mAccel / 9.81) > Configurations.alarmGravity){
                // new Intent(this, MainActivity.class);
-                Intent dialogIntent = new Intent(getBaseContext(), MainActivity.class);
-                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplication().startActivity(dialogIntent);
-                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplication().startActivity(dialogIntent);
 
-                Log.d(TAG, mAccel + "");
+
+               if(!MainActivity.running){
+                   startMainActivity();
+                }
+
+                alertMessage();
+
             }
 
 
@@ -91,6 +99,9 @@ public class Acceleration extends Service implements SensorEventListener{
 
 
     }
+
+
+
     protected void onResume() {
         //super.onResume();
         // register this class as a listener for the orientation and
@@ -108,6 +119,32 @@ public class Acceleration extends Service implements SensorEventListener{
 
 
 
+    }
+
+    private void startMainActivity(){
+        Intent dialogIntent = new Intent(getBaseContext(), MainActivity.class);
+        dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplication().startActivity(dialogIntent);
+        dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplication().startActivity(dialogIntent);
+        MainActivity.running = true;
+    }
+
+    private void alertMessage(){
+
+    }
+
+    protected Boolean isActivityRunning(Class activityClass)
+    {
+        ActivityManager activityManager = (ActivityManager) getBaseContext().getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> tasks = activityManager.getRunningTasks(Integer.MAX_VALUE);
+
+        for (ActivityManager.RunningTaskInfo task : tasks) {
+            if (activityClass.getCanonicalName().equalsIgnoreCase(task.baseActivity.getClassName()))
+                return true;
+        }
+
+        return false;
     }
 
 }
