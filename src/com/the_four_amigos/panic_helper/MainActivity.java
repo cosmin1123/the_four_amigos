@@ -1,9 +1,10 @@
-package com.example.the_four_amigos;
+package com.the_four_amigos.panic_helper;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.example.the_four_amigos.R;
 
-public class MyActivity extends Activity {
+public class MainActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
