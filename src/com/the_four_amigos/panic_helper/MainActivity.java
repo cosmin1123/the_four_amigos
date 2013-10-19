@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import com.the_four_amigos.panic_helper.sensors.Acceleration;
 
 public class MainActivity extends Activity {
@@ -20,6 +21,11 @@ public class MainActivity extends Activity {
 
 
        // stopService(accelerationService);
+    }
+
+    public void setConfiguration(View view) {
+        Intent intent = new Intent(this, ConfigurationActivity.class);
+        startActivity(intent);
     }
 
     @Override
