@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-        >
-    <TextView
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent"
+              android:orientation="vertical" android:weightSum="12">
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MyActivity"
-            />
+            android:layout_height="0dp" android:layout_weight="2">
+        <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activate/Deactivate"
+                android:id="@+id/Switch"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:switchMinWidth="100dp"
+                android:padding="5dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp" android:gravity="center" android:layout_gravity="center"
+            android:layout_weight="8">
+        <Button android:text="HELP"
+                android:id="@+id/button1"
+                android:background="@drawable/help_button"
+                style="@style/ButtonText"
+                android:height="270dp"
+                android:width="270dp"
+                android:layout_height="wrap_content" android:textSize="100dp"
+                android:gravity="center" android:layout_width="wrap_content"></Button>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp" android:gravity="center_horizontal|bottom" android:layout_weight="2">
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Configuration"
+                android:background="@drawable/config_button"
+                style="@style/ButtonText"
+                android:id="@+id/button" android:enabled="true" android:textAlignment="center"
+                android:layout_gravity="center" android:height="50dp" android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp" android:layout_marginBottom="10dp" android:textSize="22dp" android:gravity="bottom"/>
+    </LinearLayout>
 </LinearLayout>
 
