@@ -12,13 +12,16 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import com.the_four_amigos.panic_helper.Configurations;
 import com.the_four_amigos.panic_helper.MainActivity;
+import com.the_four_amigos.panic_helper.alerts.Speak;
 
 import java.util.List;
 
 public class Acceleration extends Service implements SensorEventListener{
+    private Speak talk = new Speak(MainActivity.getAppContext());
     private float mAccel; // acceleration apart from gravity
     private float mAccelCurrent; // current acceleration including gravity
     private float mAccelLast; // last acceleration including gravity
@@ -77,9 +80,11 @@ public class Acceleration extends Service implements SensorEventListener{
             mAccel = mAccel * 0.9f + delta; // perform low-cut filter
             mAccel = Math.abs(mAccel);
 
-
             if( (mAccel / 9.81) > Configurations.alarmGravity){
                // new Intent(this, MainActivity.class);
+
+                talk.speakWords("Stop shaking me!");
+                Log.d(TAG, "I am here, have no fear");
 
 
                if(!MainActivity.running){
@@ -131,7 +136,7 @@ public class Acceleration extends Service implements SensorEventListener{
     }
 
     private void alertMessage(){
-
+        //TextToSpeech("Stop it!!");
     }
 
     protected Boolean isActivityRunning(Class activityClass)

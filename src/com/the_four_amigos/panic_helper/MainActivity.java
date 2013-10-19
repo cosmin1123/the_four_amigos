@@ -1,15 +1,19 @@
 package com.the_four_amigos.panic_helper;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import com.the_four_amigos.panic_helper.alerts.Speak;
 import com.the_four_amigos.panic_helper.sensors.Acceleration;
 
 public class MainActivity extends Activity {
-
     private SensorManager mSensorManager;
     public static boolean running;
+    private static Context context;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +23,10 @@ public class MainActivity extends Activity {
         startService(accelerationService);
 
 
+        MainActivity.context = getApplicationContext();
+
        // stopService(accelerationService);
+
     }
 
     @Override
@@ -32,6 +39,10 @@ public class MainActivity extends Activity {
     public void onStop() {
         super.onStop();
         running = false;
+    }
+
+    public static Context getAppContext() {
+        return MainActivity.context;
     }
 
 }
