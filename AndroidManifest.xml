@@ -11,6 +11,7 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
         </activity>
     </application>
 </manifest> 
