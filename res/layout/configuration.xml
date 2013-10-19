@@ -64,7 +64,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/switch1" android:layout_gravity="center_vertical"/>
@@ -72,7 +72,7 @@
             <FrameLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/switch2" android:layout_gravity="center_vertical"/>
@@ -80,7 +80,7 @@
             <FrameLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/switch3" android:layout_gravity="center_vertical"/>
@@ -98,7 +98,7 @@
             <FrameLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/switch4" android:layout_gravity="center_vertical"/>
@@ -106,7 +106,7 @@
             <FrameLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/switch5" android:layout_gravity="center_vertical"/>
@@ -114,7 +114,7 @@
             <FrameLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/switch6" android:layout_gravity="center_vertical"/>
@@ -132,7 +132,7 @@
             <FrameLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/switch7" android:layout_gravity="center_vertical"/>
@@ -140,7 +140,7 @@
             <FrameLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/switch8" android:layout_gravity="center_vertical"/>
@@ -148,10 +148,10 @@
             <FrameLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:layout_weight="3">
-                <Switch
+                <ToggleButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/switch9" android:layout_gravity="center_vertical"/>
+                        android:id="@+id/ToggleButton9" android:layout_gravity="center_vertical"/>
             </FrameLayout>
         </TableRow>
     </TableLayout>
