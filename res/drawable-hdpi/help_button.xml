@@ -9,7 +9,7 @@
                     android:width="1dp"
                     android:color="#992f2f" />
             <corners
-                    android:radius="110dp" />
+                    android:radius="270dp" />
             <padding
                     android:left="10dp"
                     android:top="10dp"
@@ -27,7 +27,7 @@
                     android:width="1dp"
                     android:color="#992f2f" />
             <corners
-                    android:radius="110dp" />
+                    android:radius="270dp" />
             <padding
                     android:left="10dp"
                     android:top="10dp"

@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.Message;
-import android.os.RemoteException;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 import com.the_four_amigos.panic_helper.alerts.Speak;
-import com.the_four_amigos.panic_helper.listener.VoiceCommandService;
 import com.the_four_amigos.panic_helper.sensors.Acceleration;
 
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class MainActivity extends Activity {
     private SensorManager mSensorManager;
     public static boolean running;
     private static Context context;
-    static VoiceCommandService voiceCommandService;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +28,18 @@ public class MainActivity extends Activity {
         Intent accelerationService = new Intent(this, Acceleration.class);
         startService(accelerationService);
 
-     //   Intent voiceService = new Intent(this, VoiceCommandService.class);
-     //   startService(voiceService);
 
         MainActivity.context = getApplicationContext();
 
-      //  voiceRecognitionStart();
        // stopService(accelerationService);
 
     }
-
+    
+    public void setConfiguration(View view) {
+        Intent intent = new Intent(this, ConfigurationActivity.class);
+        startActivity(intent);
+    }
+    
     @Override
     public void onStart() {
         super.onStart();
@@ -74,29 +74,6 @@ public class MainActivity extends Activity {
         }
     }
 
-    public static void init(Context context)
-    {
-        voiceCommandService = new VoiceCommandService();
-
-    }
-
-    public static void startContinuousListening()
-    {
-        Intent service = new Intent(  MainActivity.getAppContext(), VoiceCommandService.class);
-        MainActivity.getAppContext().startService(service);
-
-        Message msg = new Message();
-        msg.what = 1234;
-
-        try
-        {
-            voiceCommandService.mServerMessenger.send(msg);
-        }
-        catch (RemoteException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
+  
 
 }
