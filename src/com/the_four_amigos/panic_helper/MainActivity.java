@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
 import android.speech.tts.TextToSpeech;
@@ -13,6 +14,8 @@ import android.widget.Switch;
 import android.widget.Toast;
 import com.the_four_amigos.panic_helper.alerts.Speak;
 import com.the_four_amigos.panic_helper.sensors.*;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
     private SensorManager mSensorManager;
@@ -75,5 +78,6 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
     public static Context getAppContext() {
         return MainActivity.context;
     }
+
 
 }

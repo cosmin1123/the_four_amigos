@@ -49,8 +49,9 @@ public class Acceleration extends Service implements SensorEventListener{
 
         flag=false;
         Log.d(TAG, "onDestroy");
-        super.onDestroy();
         stopForeground(true);
+        super.onDestroy();
+
     }
     public void onStart(Intent intent, int startId)
     {
