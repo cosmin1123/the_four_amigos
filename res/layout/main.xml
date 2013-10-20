@@ -27,6 +27,7 @@
                 style="@style/ButtonText"
                 android:height="270dp"
                 android:width="270dp"
+                android:onClick="onHelp"
                 android:layout_height="wrap_content" android:textSize="100dp"
                 android:gravity="center" android:layout_width="wrap_content"></Button>
     </LinearLayout>
