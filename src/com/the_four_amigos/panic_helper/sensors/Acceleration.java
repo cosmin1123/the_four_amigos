@@ -15,6 +15,7 @@ import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import com.the_four_amigos.panic_helper.Configurations;
+import com.the_four_amigos.panic_helper.DangerAlarm;
 import com.the_four_amigos.panic_helper.MainActivity;
 import com.the_four_amigos.panic_helper.alerts.Speak;
 
@@ -48,8 +49,9 @@ public class Acceleration extends Service implements SensorEventListener{
 
         flag=false;
         Log.d(TAG, "onDestroy");
-        super.onDestroy();
         stopForeground(true);
+        super.onDestroy();
+
     }
     public void onStart(Intent intent, int startId)
     {
@@ -81,11 +83,10 @@ public class Acceleration extends Service implements SensorEventListener{
             mAccel = Math.abs(mAccel);
 
             if( (mAccel / 9.81) > Configurations.alarmGravity){
-               // new Intent(this, MainActivity.class);
 
-                talk.speakWords("Stop shaking me!");
-                Log.d(TAG, "I am here, have no fear");
+                talk.speakWords("Panic alarm will start in 30 seconds, please press on the screen or say stop to cancel.");
 
+                //MainActivity
 
                if(!MainActivity.running){
                    startMainActivity();
@@ -137,6 +138,12 @@ public class Acceleration extends Service implements SensorEventListener{
 
     private void alertMessage(){
         //TextToSpeech("Stop it!!");
+        Intent dialogIntent = new Intent(MainActivity.getAppContext(), DangerAlarm.class);
+        dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplication().startActivity(dialogIntent);
+        dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplication().startActivity(dialogIntent);
+        MainActivity.running = true;
     }
 
     protected Boolean isActivityRunning(Class activityClass)

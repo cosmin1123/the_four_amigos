@@ -145,10 +145,6 @@ public class GPSTracker extends Service implements LocationListener {
         return longitude;
     }
 
-    public String getLocationLink() {
-        return "http://maps.google.com/?q=" + getLatitude() + "," + getLongitude();
-    }
-
     /**
      * Function to check GPS/wifi enabled
      * @return boolean
