@@ -5,41 +5,61 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
+import android.speech.tts.TextToSpeech;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 import com.the_four_amigos.panic_helper.alerts.Speak;
-import com.the_four_amigos.panic_helper.sensors.Acceleration;
+import com.the_four_amigos.panic_helper.sensors.*;
 
-import java.util.ArrayList;
-
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
     private SensorManager mSensorManager;
     public static boolean running;
     private static Context context;
-
+    Intent accelerationService;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Intent accelerationService = new Intent(this, Acceleration.class);
-        startService(accelerationService);
+        Switch s = (Switch) findViewById(R.id.Switch);
+        if(s != null) s.setOnCheckedChangeListener(this);
+
+        accelerationService = new Intent(this, Acceleration.class);
+
+//        Intent voice = new Intent(this, SpeechService.class);
+//        startService(voice);
 
 
         MainActivity.context = getApplicationContext();
 
-       // stopService(accelerationService);
+        // stopService(accelerationService);
 
     }
-    
+
     public void setConfiguration(View view) {
         Intent intent = new Intent(this, ConfigurationActivity.class);
         startActivity(intent);
     }
-    
+
+    public void onHelp(View view) {
+        Intent dialogIntent = new Intent(MainActivity.getAppContext(), DangerAlarm.class);
+        dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplication().startActivity(dialogIntent);
+        dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplication().startActivity(dialogIntent);
+        MainActivity.running = true;
+    }
+
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked)
+            startService(accelerationService);
+        else
+            stopService(accelerationService);
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -55,25 +75,5 @@ public class MainActivity extends Activity {
     public static Context getAppContext() {
         return MainActivity.context;
     }
-
-    public void voiceRecognitionStart() {
-        Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
-        try {
-            startActivityForResult(i, 1);
-        } catch (Exception e) {
-            Toast.makeText(this, "Error initializing speech to text engine.", Toast.LENGTH_LONG).show();
-        }
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==1  && resultCode==RESULT_OK) {
-            ArrayList<String> thingsYouSaid = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            Log.d("Main", thingsYouSaid.get(0));
-        }
-    }
-
-  
 
 }

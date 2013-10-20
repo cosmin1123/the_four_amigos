@@ -8,5 +8,5 @@ package com.the_four_amigos.panic_helper;
  * To change this template use File | Settings | File Templates.
  */
 public class Configurations {
-    public static float alarmGravity = 1.0f;
+    public static float alarmGravity = 1.3f;
 }
