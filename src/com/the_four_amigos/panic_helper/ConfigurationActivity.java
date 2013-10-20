@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.DragEvent;
 import android.view.View;
 import android.widget.*;
@@ -18,6 +19,7 @@ public class ConfigurationActivity extends Activity {
     private Spinner spinner;
     private final static float ACCELERATION = 9.8f;
     private final static float MPS_TO_MKPH = 3.6f;
+    private EditText input;
     public SeekBar gravitySeekBar;
     public TextView accelerationTextView;
     public TextView speedTextView;
@@ -47,7 +49,8 @@ public class ConfigurationActivity extends Activity {
         alert.setMessage("Please add a new Contact");
 
         // Set an EditText view to get user input
-        final EditText input = new EditText(this);
+        input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
         alert.setView(input);
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {

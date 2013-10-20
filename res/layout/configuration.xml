@@ -4,10 +4,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/scrollView"
-        android:fillViewport="true">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
-                  android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="12"
-                  android:id="@+id/linearLayout">
+        android:fillViewport="true" android:focusableInTouchMode="true">
+    <LinearLayout  android:orientation="vertical"
+                  android:layout_width="fill_parent" android:layout_height="fill_parent"
+                  android:id="@+id/linearLayout" >
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0dp"
                       android:layout_marginTop="15dp" android:layout_weight="2" android:gravity="center_vertical">
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -53,17 +53,17 @@
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch1" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton1" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch2" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton2" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch3" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton3" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
             </TableRow>
             <TableRow android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="13"
@@ -74,17 +74,17 @@
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch4" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton4" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch5" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton5" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch6" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton6" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
             </TableRow>
             <TableRow android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="13"
@@ -95,17 +95,17 @@
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch7" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton7" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch8" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton8" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
                 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
                              android:layout_weight="3">
                     <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:id="@+id/Switch9" android:layout_gravity="center_vertical"/>
+                                  android:id="@+id/ToggleButton9" android:layout_gravity="center_vertical"/>
                 </FrameLayout>
             </TableRow>
         </TableLayout>
@@ -118,19 +118,11 @@
                       android:layout_marginLeft="20dp" android:layout_marginRight="20dp" android:id="@+id/editText"
                       android:layout_weight="6" android:gravity="left"/>
         </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0dp"
-                      android:layout_weight="2" android:gravity="center_vertical|center_horizontal"
-                      android:weightSum="12">
-            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Save"
-                    android:id="@+id/button" android:textSize="16dp" android:layout_weight="3"/>
-            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel"
-                    android:id="@+id/button1" android:textSize="16dp" android:layout_weight="3"/>
-        </LinearLayout>
         <TextView android:gravity="center_horizontal" android:id="@+id/textView13" android:layout_height="20dp"
                   android:layout_width="fill_parent" android:text="Add phone numbers to be contacted"/>
         <LinearLayout android:layout_height="0dp" android:layout_weight="1.5" android:layout_width="fill_parent"
                       android:orientation="horizontal" android:id="@+id/linearLayout1">
-            <Spinner android:layout_width="0dp" android:layout_height="fill_parent" android:id="@+id/phoneListSpinner"
+            <Spinner android:layout_width="0dp" android:layout_height="40dp" android:id="@+id/phoneListSpinner"
                      android:layout_gravity="center" android:layout_weight=".60" android:longClickable="false"/>
             <ImageButton android:layout_width="0dp" android:layout_height="fill_parent" android:id="@+id/addPhoneNumber"
                          android:layout_weight=".20" android:src="@drawable/add_icon" android:scaleType="fitCenter"/>

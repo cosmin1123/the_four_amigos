@@ -23,14 +23,14 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Switch s = (Switch) findViewById(R.id.Switch);
-        if(s != null) s.setOnCheckedChangeListener(this);
+//        Switch s = (Switch) findViewById(R.id.Switch);
+//        if(s != null) s.setOnCheckedChangeListener(this);
 
         //Intent accelerationService = new Intent(this, Acceleration.class);
         //startService(accelerationService);
 
-        Intent voice = new Intent(this, SpeechService.class);
-        startService(voice);
+//        Intent voice = new Intent(this, SpeechService.class);
+//        startService(voice);
 
 
         MainActivity.context = getApplicationContext();
