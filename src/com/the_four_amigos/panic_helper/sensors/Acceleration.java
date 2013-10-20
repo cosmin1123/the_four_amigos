@@ -81,11 +81,11 @@ public class Acceleration extends Service implements SensorEventListener{
             mAccel = Math.abs(mAccel);
 
             if( (mAccel / 9.81) > Configurations.alarmGravity){
-               // new Intent(this, MainActivity.class);
+               // new o(this, MainActivity.class);
 
                 talk.speakWords("Stop shaking me!");
                 Log.d(TAG, "I am here, have no fear");
-
+                //MainActivity
 
                if(!MainActivity.running){
                    startMainActivity();
